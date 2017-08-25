@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import org.apmem.tools.layouts.FlowLayout;
+import org.parceler.Parcels;
 
 import java.util.Objects;
 
@@ -49,7 +51,8 @@ public class ArticleFragment extends Fragment {
     public static ArticleFragment newInstance(Article article) {
         ArticleFragment fragment = new ArticleFragment();
         Bundle args = new Bundle();
-        args.putSerializable(KEY_ARTICLE, article);
+        Parcelable parcelable = Parcels.wrap(article);
+        args.putParcelable(KEY_ARTICLE, parcelable);
         fragment.setArguments(args);
         return fragment;
     }
@@ -58,7 +61,7 @@ public class ArticleFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            thisArticle = (Article) getArguments().getSerializable(KEY_ARTICLE);
+            thisArticle = Parcels.unwrap(getArguments().getParcelable(KEY_ARTICLE));
             Log.d(TAG, "yay: " + thisArticle.toString());
         }
     }

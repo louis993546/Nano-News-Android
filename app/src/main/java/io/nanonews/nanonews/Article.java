@@ -4,8 +4,9 @@ import android.support.annotation.Nullable;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
+import org.parceler.Parcel;
 
+import io.realm.ArticleRealmProxy;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -14,7 +15,8 @@ import io.realm.annotations.PrimaryKey;
  * Probably what the api will return
  * Created by louistsai on 25.08.17.
  */
-public class Article extends RealmObject implements Serializable {
+@Parcel(implementations = {ArticleRealmProxy.class}, value = Parcel.Serialization.BEAN, analyze = {Article.class})
+public class Article extends RealmObject {
     @PrimaryKey @SerializedName("id")private int id;
     @SerializedName("title") private String title;
     @SerializedName("description") private String description;

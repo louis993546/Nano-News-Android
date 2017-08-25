@@ -33,4 +33,8 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
     implementation 'com.google.code.gson:gson:2.8.1'
     implementation 'org.apmem.tools:layouts:1.10@aar'
+    implementation 'org.parceler:parceler-api:1.1.9'
+    annotationProcessor 'org.parceler:parceler:1.1.9'
+    debugImplementation 'com.readystatesoftware.chuck:library:1.1.0'
+    releaseImplementation 'com.readystatesoftware.chuck:library-no-op:1.1.0'
 }

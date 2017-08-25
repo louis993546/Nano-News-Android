@@ -1,5 +1,6 @@
 package io.nanonews.nanonews;
 
+import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
@@ -19,11 +20,10 @@ public class DataCenter {
     NanonewsApiWrapper apiWrapper;
     Realm realm;
 
-    public DataCenter() {
+    public DataCenter(Context context) {
+        realm = Realm.getDefaultInstance();
         if (App.isOnline) {
-            apiWrapper = new NanonewsApiWrapper();
-        } else {
-            realm = Realm.getDefaultInstance();
+            apiWrapper = new NanonewsApiWrapper(context);
         }
     }
 
@@ -34,12 +34,14 @@ public class DataCenter {
      */
     public void getArticles(@Nullable List<Integer> categories, final DataFetchingCallback<List<Article>> callback) {
         if (App.isOnline) {
-            Log.d(TAG, "5");
             apiWrapper.getArticles(categories).enqueue(new Callback<List<Article>>() {
                 @Override
                 public void onResponse(Call<List<Article>> call, Response<List<Article>> response) {
                     Log.d(TAG, "6: " + response.toString());
                     callback.onDataFetched(response.body());
+                    realm.beginTransaction();
+                    realm.copyToRealmOrUpdate(response.body());
+                    realm.commitTransaction();
                 }
 
                 @Override
@@ -65,6 +67,7 @@ public class DataCenter {
             apiWrapper.getCategories().enqueue(new Callback<List<Category>>() {
                 @Override
                 public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
+                    realm.copyToRealmOrUpdate(response.body());
                     callback.onDataFetched(response.body());
                 }
 
@@ -77,5 +80,9 @@ public class DataCenter {
             RealmResults<Category> results = realm.where(Category.class).findAll();
             callback.onDataFetched(results);
         }
+    }
+
+    public void close() {
+        realm.close();
     }
 }
