@@ -13,7 +13,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="centerCrop"
         tools:src="@color/colorAccent"/>
+
+    <org.apmem.tools.layouts.FlowLayout
+        android:id="@+id/flow_layout_categories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/image_view_cover_photo"
+        app:layout_constraintEnd_toEndOf="@id/image_view_cover_photo"
+        app:layout_constraintBottom_toBottomOf="@id/image_view_cover_photo"
+        android:orientation="horizontal"/>
 
     <TextView
         android:id="@+id/text_view_title"

@@ -10,7 +10,7 @@ import retrofit2.http.Query;
  * Created by louistsai on 25.08.17.
  */
 public interface NanonewsInterface {
-    @GET("articles")
+    @GET("news_articles")
     Call<List<Article>> getArticles(@Query("category_list") String categories);
 
     @GET("categories")

@@ -1,50 +1,63 @@
 package io.nanonews.nanonews;
 
+import android.support.annotation.Nullable;
+
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Probably what the api will return
  * Created by louistsai on 25.08.17.
  */
 public class Article extends RealmObject implements Serializable {
-    private String title;
-    private String description;
-    private String full_url;
-    private RealmList<Category> categoryList;
-    private String media_url;
-    private String media_type;
+    @PrimaryKey @SerializedName("id")private int id;
+    @SerializedName("title") private String title;
+    @SerializedName("description") private String description;
+    @SerializedName("full_url") private String full_url;
+    @SerializedName("categories") private RealmList<Category> categoryList;
+    @SerializedName("media_url") private String media_url;
+    @SerializedName("media_type") private String media_type;
 
+    @Nullable
     public String getTitle() {
         return title;
     }
 
+    @Nullable
     public String getDescription() {
         return description;
     }
 
-    public String getFull_url() {
+    @Nullable
+    public String getFullUrl() {
         return full_url;
     }
 
+    @Nullable
     public RealmList<Category> getCategoryList() {
         return categoryList;
     }
 
-    public String getMedia_url() {
+    @Nullable
+    public String getMediaUrl() {
         return media_url;
     }
 
-    public String getMedia_type() {
+    @Nullable
+    public String getMediaType() {
         return media_type;
     }
 
     @Override
     public String toString() {
         return "Article{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", full_url='" + full_url + '\'' +
                 ", categoryList=" + categoryList +
