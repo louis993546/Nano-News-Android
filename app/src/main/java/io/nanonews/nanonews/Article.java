@@ -1,18 +1,19 @@
 package io.nanonews.nanonews;
 
-import java.util.List;
+import java.io.Serializable;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 
 /**
  * Probably what the api will return
  * Created by louistsai on 25.08.17.
  */
-public class Article extends RealmObject {
+public class Article extends RealmObject implements Serializable {
     private String title;
     private String description;
     private String full_url;
-    private List<Integer> categoryList;
+    private RealmList<Category> categoryList;
     private String media_url;
     private String media_type;
 
@@ -28,7 +29,7 @@ public class Article extends RealmObject {
         return full_url;
     }
 
-    public List<Integer> getCategoryList() {
+    public RealmList<Category> getCategoryList() {
         return categoryList;
     }
 
