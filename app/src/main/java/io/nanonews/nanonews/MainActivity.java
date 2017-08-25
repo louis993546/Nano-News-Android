@@ -23,17 +23,35 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+
+        //testing codes
+
         NanonewsApiWrapper wrapper = new NanonewsApiWrapper();
-        Call<List<Article>> call = wrapper.getArticles(null);
-        Log.d(TAG, call.request().toString());
-        call.enqueue(new Callback<List<Article>>() {
+        //API not ready yet
+//        Call<List<Article>> call = wrapper.getArticles(null);
+//        Log.d(TAG, call.request().toString());
+//        call.enqueue(new Callback<List<Article>>() {
+//            @Override
+//            public void onResponse(Call<List<Article>> call, Response<List<Article>> response) {
+//                Log.d(TAG, response.body().toString());
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Article>> call, Throwable t) {
+//                t.printStackTrace();
+//                Log.e(TAG, t.toString());
+//            }
+//        });
+        //TODO testing codes
+        Call<List<Category>> call = wrapper.getCategories();
+        call.enqueue(new Callback<List<Category>>() {
             @Override
-            public void onResponse(Call<List<Article>> call, Response<List<Article>> response) {
-                Log.d(TAG, response.body().toString());
+            public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
+                                Log.d(TAG, response.body().toString());
             }
 
             @Override
-            public void onFailure(Call<List<Article>> call, Throwable t) {
+            public void onFailure(Call<List<Category>> call, Throwable t) {
                 t.printStackTrace();
                 Log.e(TAG, t.toString());
             }
