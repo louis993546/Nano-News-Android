@@ -1,6 +1,9 @@
 package io.nanonews.nanonews;
 
 import android.app.Application;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 
 import io.realm.Realm;
 
@@ -14,6 +17,17 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         Realm.init(this);
-        //TODO see the internet is available: if not, use realm; else, call api (set flag). This will not change in runtime
+        checkNetworkAvailability();
+    }
+
+    private void checkNetworkAvailability() {
+        ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo;
+        if (manager != null) {
+            networkInfo = manager.getActiveNetworkInfo();
+            if (networkInfo != null && networkInfo.isConnected()) {
+                isOnline = true;
+            }
+        }
     }
 }
