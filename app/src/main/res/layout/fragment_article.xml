@@ -1,0 +1,52 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="io.nanonews.nanonews.ArticleFragment">
+
+    <ImageView
+        android:id="@+id/image_view_cover_photo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="16:9"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:src="@color/colorAccent"/>
+
+    <TextView
+        android:id="@+id/text_view_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/image_view_cover_photo"
+        tools:text="Title can be several lines long. make sure it does not look horrible"/>
+
+    <TextView
+        android:id="@+id/text_view_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/text_view_title"
+        app:layout_constraintStart_toStartOf="@id/text_view_title"
+        android:layout_marginTop="8dp"
+        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget rutrum ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam erat volutpat. Fusce in rhoncus nisl. Duis quis dolor libero. Vestibulum eget nulla volutpat mi pellentesque auctor. Proin vel fermentum lorem. Etiam in convallis."/>
+
+    <Button
+        android:id="@+id/button_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_read_more"
+        android:text="Share"/>
+
+    <Button
+        android:id="@+id/button_read_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/button_share"
+        app:layout_constraintBottom_toBottomOf="@id/button_share"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Read more"/>
+
+</android.support.constraint.ConstraintLayout>
