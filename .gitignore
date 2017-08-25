@@ -12,3 +12,6 @@
 # Ignore gradle files
 .gradle/
 build/
+
+# IDEA config files
+.idea/

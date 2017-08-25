@@ -97,7 +97,8 @@ public class ArticleFragment extends Fragment {
         if (Objects.equals(thisArticle.getMediaType(), Const.MEDIA_TYPE_IMAGE)) {
             Glide.with(getContext()).load(thisArticle.getMediaUrl()).into(coverPhoto);
         } else if (Objects.equals(thisArticle.getMediaType(), Const.MEDIA_TYPE_VIDEO)) {
-            //TODO youtube api
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(thisArticle.getMediaUrl())));
+            //TODO youtube api instead of youtube intent
         }
         for (Category c: thisArticle.getCategoryList()) {
             Button button = new Button(getContext());
