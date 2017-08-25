@@ -19,4 +19,12 @@ public class Category extends RealmObject implements Serializable {
     public String getTitle() {
         return title;
     }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                '}';
+    }
 }

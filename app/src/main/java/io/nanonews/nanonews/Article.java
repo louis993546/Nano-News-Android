@@ -40,4 +40,16 @@ public class Article extends RealmObject implements Serializable {
     public String getMedia_type() {
         return media_type;
     }
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", full_url='" + full_url + '\'' +
+                ", categoryList=" + categoryList +
+                ", media_url='" + media_url + '\'' +
+                ", media_type='" + media_type + '\'' +
+                '}';
+    }
 }

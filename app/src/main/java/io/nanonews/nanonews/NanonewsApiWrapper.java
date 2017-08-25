@@ -28,7 +28,7 @@ public class NanonewsApiWrapper {
      * @param categories is the filter you want to apply, nullable
      * @return the call object so that you can cancel it if you want
      */
-    private Call<List<Article>> getArticles(@Nullable List<Integer> categories) {
+    public Call<List<Article>> getArticles(@Nullable List<Integer> categories) {
         String output = null;
         if (categories != null && categories.size() > 0) {
             output = TextUtils.join(",", categories);
@@ -40,7 +40,7 @@ public class NanonewsApiWrapper {
      * This is simple
      * @return
      */
-    private Call<List<Category>> getCategories() {
+    public Call<List<Category>> getCategories() {
         return nanonews.getCategories();
     }
 }
