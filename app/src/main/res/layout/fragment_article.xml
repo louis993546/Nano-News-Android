@@ -13,33 +13,37 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/background_2"
         android:scaleType="centerCrop"
-        tools:src="@color/colorAccent"/>
+        tools:layout_editor_absoluteX="0dp" />
 
     <org.apmem.tools.layouts.FlowLayout
         android:id="@+id/flow_layout_categories"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/image_view_cover_photo"
         app:layout_constraintEnd_toEndOf="@id/image_view_cover_photo"
-        app:layout_constraintBottom_toBottomOf="@id/image_view_cover_photo"
-        android:orientation="horizontal"/>
+        app:layout_constraintBottom_toBottomOf="@+id/image_view_cover_photo"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="8dp" />
 
     <TextView
         android:id="@+id/text_view_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/image_view_cover_photo"
-        tools:text="Title can be several lines long. make sure it does not look horrible"/>
+        app:layout_constraintTop_toBottomOf="@+id/image_view_cover_photo"
+        tools:text="Title can be several lines long. make sure it does not look horrible"
+        tools:layout_editor_absoluteX="0dp" />
 
     <TextView
         android:id="@+id/text_view_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/text_view_title"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_title"
         app:layout_constraintStart_toStartOf="@id/text_view_title"
         android:layout_marginTop="8dp"
-        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget rutrum ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam erat volutpat. Fusce in rhoncus nisl. Duis quis dolor libero. Vestibulum eget nulla volutpat mi pellentesque auctor. Proin vel fermentum lorem. Etiam in convallis."/>
+        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget rutrum ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam erat volutpat. Fusce in rhoncus nisl. Duis quis dolor libero. Vestibulum eget nulla volutpat mi pellentesque auctor. Proin vel fermentum lorem. Etiam in convallis."
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/button_share"
@@ -48,15 +52,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_read_more"
-        android:text="Share"/>
+        android:text="Share"
+        tools:layout_editor_absoluteX="65dp" />
 
     <Button
         android:id="@+id/button_read_more"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/button_share"
-        app:layout_constraintBottom_toBottomOf="@id/button_share"
+        app:layout_constraintBottom_toBottomOf="@+id/button_share"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Read more"/>
+        android:text="Read more"
+        tools:layout_editor_absoluteX="219dp" />
 
 </android.support.constraint.ConstraintLayout>
