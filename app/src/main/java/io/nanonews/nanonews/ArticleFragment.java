@@ -42,6 +42,8 @@ public class ArticleFragment extends Fragment {
     //data
     @Nullable Article thisArticle;
 
+    private OnFragmentInteractionListener mListener;
+
     public ArticleFragment() {
         // Required empty public constructor
     }
@@ -106,5 +108,25 @@ public class ArticleFragment extends Fragment {
             button.setText(c.getTitle());
             flowLayout.addView(button);
         }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    public interface OnFragmentInteractionListener {
+        void onFragmentInteraction(Uri uri);
     }
 }
