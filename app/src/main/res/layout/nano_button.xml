@@ -1,0 +1,16 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="10dp">
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="27dp"
+            android:background="@drawable/button"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:id="@+id/ButtonTest"
+            android:text="text" />
+
+    </LinearLayout>

@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -94,9 +96,10 @@ public class ArticleFragment extends Fragment {
             //TODO youtube api instead of youtube intent
         }
         for (Category c: thisArticle.getCategoryList()) {
-            Button button = new Button(getContext());
+            LinearLayout buttonLayout = (LinearLayout) View.inflate(getContext(),R.layout.nano_button, null);
+            Button button= (Button)buttonLayout.findViewById(R.id.ButtonTest);
             button.setText(c.getTitle());
-            flowLayout.addView(button);
+            flowLayout.addView(buttonLayout);
         }
     }
 
