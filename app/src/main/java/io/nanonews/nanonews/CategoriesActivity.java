@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import org.apmem.tools.layouts.FlowLayout;
@@ -26,6 +27,8 @@ public class CategoriesActivity extends AppCompatActivity implements View.OnClic
     //views
     @BindView(R.id.flow_layout_categories) FlowLayout flowLayout;
     @BindView(R.id.progress_bar) ProgressBar progressBar;
+    @BindView(R.id.image_view_arrow)
+    ImageView goBack;
 
     DataCenter dataCenter;
     ArrayList<Integer> currentlySelectedCategories = new ArrayList<>();
@@ -53,6 +56,12 @@ public class CategoriesActivity extends AppCompatActivity implements View.OnClic
             @Override
             public void onFail(Throwable exception) {
                 exception.printStackTrace();
+            }
+        });
+        goBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
