@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements ArticleFragment.O
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.toolbar_menu, menu);
-        return true;
+        return(super.onCreateOptionsMenu(menu));
     }
 
     @Override
@@ -93,7 +94,9 @@ public class MainActivity extends AppCompatActivity implements ArticleFragment.O
             this.toolbar = toolbar;
             toolbar.setTitleTextColor(getResources().getColor(R.color.colorText));
             setSupportActionBar(toolbar);
-            getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_categories);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+            //toolbar.setTitle("  "+getResources().getString(R.string.bar_name));
+            getSupportActionBar().setLogo(R.mipmap.ic_categories);
 
         }
     }
