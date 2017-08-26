@@ -35,7 +35,7 @@ public class ArticleFragment extends Fragment {
     //keys
     private static final String KEY_ARTICLE = "ARTICLE";
     //views
-    @BindView(R.id.image_view_cover_photo) ImageView coverPhoto;
+    @BindView(R.id.card_view) ImageView coverPhoto;
     @BindView(R.id.text_view_title) TextView title;
     @BindView(R.id.text_view_content) TextView content;
     @BindView(R.id.flow_layout_categories) FlowLayout flowLayout;
