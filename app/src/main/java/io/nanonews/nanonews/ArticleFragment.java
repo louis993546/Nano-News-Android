@@ -66,14 +66,7 @@ public class ArticleFragment extends Fragment {
         }
     }
 
-    @OnClick(R.id.button_share)
-    public void onShareClick() {
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_SEND);
-        intent.putExtra(Intent.EXTRA_TEXT, thisArticle.getFullUrl());
-        intent.setType("text/plain");
-        startActivity(intent);
-    }
+
 
     @OnClick(R.id.button_read_more)
     public void onReadMoreClick() {

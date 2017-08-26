@@ -13,11 +13,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static android.R.attr.data;
 
 public class MainActivity extends AppCompatActivity implements ArticleFragment.OnFragmentInteractionListener {
     private final static String TAG = MainActivity.class.getSimpleName();
@@ -59,10 +62,14 @@ public class MainActivity extends AppCompatActivity implements ArticleFragment.O
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.home:
+                Toast.makeText(this ,"home click",
+                        Toast.LENGTH_LONG).show();
 
                 break;
             case R.id.action_share:
                 share(null);
+                Toast.makeText(this ,"share click",
+                        Toast.LENGTH_LONG).show();
                 break;
 
             default:
@@ -95,8 +102,15 @@ public class MainActivity extends AppCompatActivity implements ArticleFragment.O
             toolbar.setTitleTextColor(getResources().getColor(R.color.colorText));
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
-            //toolbar.setTitle("  "+getResources().getString(R.string.bar_name));
-            getSupportActionBar().setLogo(R.mipmap.ic_categories);
+            //getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            toolbar.setNavigationIcon(R.mipmap.ic_categories);
+            //getSupportActionBar().setLogo(R.mipmap.ic_categories);
+            toolbar.setNavigationOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(MainActivity.this, "Back clicked!",     Toast.LENGTH_SHORT).show();
+                }
+            });
 
         }
     }

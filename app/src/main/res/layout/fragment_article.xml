@@ -1,68 +1,60 @@
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
     tools:context="io.nanonews.nanonews.ArticleFragment">
 
     <ImageView
         android:id="@+id/image_view_cover_photo"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintDimensionRatio="16:9"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:scaleType="centerCrop"
         tools:src="@color/colorAccent"
-        tools:layout_editor_absoluteX="0dp" />
+          />
 
     <org.apmem.tools.layouts.FlowLayout
         android:id="@+id/flow_layout_categories"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/image_view_cover_photo"
-        app:layout_constraintEnd_toEndOf="@id/image_view_cover_photo"
-        app:layout_constraintBottom_toBottomOf="@+id/image_view_cover_photo"
         android:orientation="horizontal"
-        tools:layout_editor_absoluteX="8dp" />
+         />
 
     <TextView
         android:id="@+id/text_view_title"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="14dp"
+        android:textSize="21sp"
+        android:textColor="@color/colorTitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/image_view_cover_photo"
         tools:text="Title can be several lines long. make sure it does not look horrible"
-        tools:layout_editor_absoluteX="0dp" />
+        />
 
     <TextView
         android:id="@+id/text_view_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="14dp"
+        android:textSize="16sp"
+        android:textColor="@color/colorTitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_title"
-        app:layout_constraintStart_toStartOf="@id/text_view_title"
         android:layout_marginTop="8dp"
         tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget rutrum ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam erat volutpat. Fusce in rhoncus nisl. Duis quis dolor libero. Vestibulum eget nulla volutpat mi pellentesque auctor. Proin vel fermentum lorem. Etiam in convallis."
-        tools:layout_editor_absoluteX="0dp" />
+       />
 
-    <Button
-        android:id="@+id/button_share"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_read_more"
-        android:text="Share"
-        tools:layout_editor_absoluteX="65dp" />
 
     <Button
         android:id="@+id/button_read_more"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/button_share"
-        app:layout_constraintBottom_toBottomOf="@+id/button_share"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="Read more"
-        tools:layout_editor_absoluteX="219dp" />
+        android:textSize="19sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorWhite"
+        android:layout_marginLeft="150dp"
+        android:text="Read more" />
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
