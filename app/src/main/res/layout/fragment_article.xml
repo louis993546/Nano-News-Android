@@ -37,8 +37,6 @@
     </RelativeLayout>
 
 
-
-
     <TextView
         android:id="@+id/text_view_title"
         android:layout_marginLeft="24dp"
@@ -49,6 +47,7 @@
         android:layout_height="wrap_content"
         tools:text="Title can be several lines long. make sure it does not look horrible"
         />
+
 
     <TextView
         android:id="@+id/text_view_content"
@@ -64,6 +63,7 @@
        />
 
 
+
     <Button
         android:id="@+id/button_read_more"
         android:layout_width="160dp"
@@ -76,5 +76,6 @@
         android:background="@drawable/button"
         android:layout_marginLeft="120dp"
         android:text="Read more" />
+
 
 </LinearLayout>

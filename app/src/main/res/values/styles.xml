@@ -17,4 +17,17 @@
         <item name="navigationIcon">@mipmap/ic_categories</item>
     </style>
 
+    <style name="SelectYourInterest">
+        <item name="android:fontFamily">Charter</item>
+        <item name="android:textColor">#FF1970D9</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="GoToNews">
+        <item name="android:fontFamily">Tamil Sangam MN</item>
+        <item name="android:textColor">#FF1970D9</item>
+        <item name="android:textSize">19sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

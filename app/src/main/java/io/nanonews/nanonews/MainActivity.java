@@ -19,14 +19,19 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import static android.R.attr.data;
 
 public class MainActivity extends AppCompatActivity implements ArticleFragment.OnFragmentInteractionListener {
     private final static String TAG = MainActivity.class.getSimpleName();
+    private final static int KEY_FILTER = 9721;
+
+    //views
     @BindView(R.id.view_pager) ViewPager viewPager;
     @BindView(R.id.toolbar)  Toolbar toolbar;
     DataCenter dataCenter;
+    ArticlesFragmentsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +44,8 @@ public class MainActivity extends AppCompatActivity implements ArticleFragment.O
             @Override
             public void onDataFetched(List<Article> result) {
                 if (result != null && result.size() > 0) {
-                    viewPager.setAdapter(new ArticlesFragmentsAdapter(getSupportFragmentManager(), result));
+                    adapter = new ArticlesFragmentsAdapter(getSupportFragmentManager(), result);
+                    viewPager.setAdapter(adapter);
                 }
             }
 
@@ -50,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements ArticleFragment.O
             }
         });
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -109,6 +117,8 @@ public class MainActivity extends AppCompatActivity implements ArticleFragment.O
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(MainActivity.this, "Back clicked!",     Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, CategoriesActivity.class);
+                    startActivityForResult(intent, KEY_FILTER);
                 }
             });
 
@@ -124,5 +134,27 @@ public class MainActivity extends AppCompatActivity implements ArticleFragment.O
     protected void onDestroy() {
         super.onDestroy();
         dataCenter.close();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == KEY_FILTER && resultCode == RESULT_OK) {
+            viewPager.setCurrentItem(0);
+            dataCenter.getArticles(data.getIntegerArrayListExtra(CategoriesActivity.KEY_SELECTED_CATEGORIES), new DataFetchingCallback<List<Article>>() {
+                @Override
+                public void onDataFetched(List<Article> result) {
+//                    adapter.setArticles(result);
+                    adapter = new ArticlesFragmentsAdapter(getSupportFragmentManager(), result);
+                    viewPager.setAdapter(adapter);
+                }
+
+                @Override
+                public void onFail(Throwable exception) {
+                    exception.printStackTrace();
+                }
+            });
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 }
