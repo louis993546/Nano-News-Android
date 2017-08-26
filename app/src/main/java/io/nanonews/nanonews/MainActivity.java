@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements ArticleFragment.O
             @Override
             public void onDataFetched(List<Article> result) {
                 if (result != null && result.size() > 0) {
+                    listArticles = result;
                     adapter = new ArticlesFragmentsAdapter(getSupportFragmentManager(), result);
                     viewPager.setAdapter(adapter);
                 }
@@ -77,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements ArticleFragment.O
             case R.id.action_share:
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_SEND);
-                if(listArticles.size()!=0){
+                if(listArticles != null && listArticles.size()!=0){
                     intent.putExtra(Intent.EXTRA_TEXT, listArticles.get(viewPager.getCurrentItem()).getFullUrl());
                     intent.setType("text/plain");
                     startActivity(intent);
@@ -121,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements ArticleFragment.O
             toolbar.setNavigationOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(MainActivity.this, "Back clicked!",     Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MainActivity.this, "Back clicked!",     Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, CategoriesActivity.class);
                     startActivityForResult(intent, KEY_FILTER);
                 }
@@ -152,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements ArticleFragment.O
                     listArticles =  result;
                     adapter = new ArticlesFragmentsAdapter(getSupportFragmentManager(), result);
                     viewPager.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
                 }
 
                 @Override
