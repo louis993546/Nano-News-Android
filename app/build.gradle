@@ -37,6 +37,5 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
     debugCompile 'com.readystatesoftware.chuck:library:1.1.0'
     releaseCompile 'com.readystatesoftware.chuck:library-no-op:1.1.0'
-    compile 'com.android.support:cardview-v7:23.3.+'
 
 }
