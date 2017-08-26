@@ -10,14 +10,13 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/relativelayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="300dp" >
 
 
         <ImageView
             android:id="@+id/image_view_cover_photo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintDimensionRatio="16:9"
+            android:layout_height="300dp"
             android:scaleType="centerCrop"
             tools:src="@color/colorAccent"
             />

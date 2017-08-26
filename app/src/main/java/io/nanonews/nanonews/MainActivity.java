@@ -26,6 +26,7 @@ import static android.R.attr.data;
 public class MainActivity extends AppCompatActivity implements ArticleFragment.OnFragmentInteractionListener {
     private final static String TAG = MainActivity.class.getSimpleName();
     private final static int KEY_FILTER = 9721;
+    private List<Article> listArticles;
 
     //views
     @BindView(R.id.view_pager) ViewPager viewPager;
@@ -70,14 +71,18 @@ public class MainActivity extends AppCompatActivity implements ArticleFragment.O
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.home:
-                Toast.makeText(this ,"home click",
-                        Toast.LENGTH_LONG).show();
+
 
                 break;
             case R.id.action_share:
-                share(null);
-                Toast.makeText(this ,"share click",
-                        Toast.LENGTH_LONG).show();
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_SEND);
+                if(listArticles.size()!=0){
+                    intent.putExtra(Intent.EXTRA_TEXT, listArticles.get(viewPager.getCurrentItem()).getFullUrl());
+                    intent.setType("text/plain");
+                    startActivity(intent);
+                }
+
                 break;
 
             default:
@@ -144,6 +149,7 @@ public class MainActivity extends AppCompatActivity implements ArticleFragment.O
                 @Override
                 public void onDataFetched(List<Article> result) {
 //                    adapter.setArticles(result);
+                    listArticles =  result;
                     adapter = new ArticlesFragmentsAdapter(getSupportFragmentManager(), result);
                     viewPager.setAdapter(adapter);
                 }

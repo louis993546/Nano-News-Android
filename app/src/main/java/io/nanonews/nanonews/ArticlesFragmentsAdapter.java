@@ -36,4 +36,6 @@ public class ArticlesFragmentsAdapter extends FragmentStatePagerAdapter {
         this.articles = articles;
         this.notifyDataSetChanged();
     }
+
+
 }
