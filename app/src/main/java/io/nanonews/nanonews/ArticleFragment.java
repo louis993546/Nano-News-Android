@@ -2,6 +2,7 @@ package io.nanonews.nanonews;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -88,6 +89,10 @@ public class ArticleFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         title.setText(thisArticle.getTitle());
+        Typeface custom_font = Typeface.createFromAsset(getResources().getAssets(), "fonts/CharterITCbyBT-Roman.otf");
+        Typeface custom_font_bold = Typeface.createFromAsset(getResources().getAssets(), "fonts/CharterITCbyBT-Bold.otf");
+        title.setTypeface(custom_font_bold);
+        content.setTypeface(custom_font);
         content.setText(thisArticle.getDescription());
         if (Objects.equals(thisArticle.getMediaType(), Const.MEDIA_TYPE_IMAGE)) {
             Glide.with(getContext())
