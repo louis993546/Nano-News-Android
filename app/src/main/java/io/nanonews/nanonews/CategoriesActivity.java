@@ -1,5 +1,6 @@
 package io.nanonews.nanonews;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -29,6 +30,12 @@ public class CategoriesActivity extends AppCompatActivity implements View.OnClic
 
     DataCenter dataCenter;
     ArrayList<Integer> currentlySelectedCategories = new ArrayList<>();
+
+    public static Intent intentBuilder(Context context, ArrayList<Integer> alreadySelectedCategories) {
+        Intent intent = new Intent(context, CategoriesActivity.class);
+//        intent.putIntegerArrayListExtra(KEY_SELECTED_CATEGORIES, alreadySelectedCategories);
+        return intent;
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -87,10 +94,12 @@ public class CategoriesActivity extends AppCompatActivity implements View.OnClic
             CategoryChecker cc = (CategoryChecker) view;
             Log.d(TAG, cc.getCategory().toString());
             Log.d(TAG, String.valueOf(cc.isOn()));
-            if (currentlySelectedCategories.contains(cc.getCategory().getId())) {
-                currentlySelectedCategories.remove(currentlySelectedCategories.indexOf(cc.getCategory().getId()));
-            } else {
-                currentlySelectedCategories.add(cc.getCategory().getId());
+            if (currentlySelectedCategories != null) {
+                if (currentlySelectedCategories.contains(cc.getCategory().getId())) {
+                    currentlySelectedCategories.remove(currentlySelectedCategories.indexOf(cc.getCategory().getId()));
+                } else {
+                    currentlySelectedCategories.add(cc.getCategory().getId());
+                }
             }
         }
     }
