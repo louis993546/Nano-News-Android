@@ -3,6 +3,7 @@ package io.nanonews.nanonews;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.readystatesoftware.chuck.ChuckInterceptor;
 
@@ -18,6 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class NanonewsApiWrapper {
+    private static final String TAG = "NanonewsApiWrapper";
     public static final String BASE_URL = "http://10.240.86.191:3000/api/v1/";
     Retrofit retrofit;
     NanonewsInterface nanonews;
@@ -40,10 +42,13 @@ public class NanonewsApiWrapper {
      * @return the call object so that you can cancel it if you want
      */
     public Call<List<Article>> getArticles(@Nullable List<Integer> categories) {
+        Log.d(TAG, "getArticles() called with: categories = [" + categories + "]");
         String output = null;
         if (categories != null && categories.size() > 0) {
             output = TextUtils.join(",", categories);
         }
+        if (output != null)
+            Log.d("qqq", output);
         return nanonews.getArticles(output);
     }
 

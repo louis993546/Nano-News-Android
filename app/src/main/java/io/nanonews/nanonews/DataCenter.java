@@ -67,8 +67,10 @@ public class DataCenter {
             apiWrapper.getCategories().enqueue(new Callback<List<Category>>() {
                 @Override
                 public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
-                    realm.copyToRealmOrUpdate(response.body());
                     callback.onDataFetched(response.body());
+                    realm.beginTransaction();
+                    realm.copyToRealmOrUpdate(response.body());
+                    realm.commitTransaction();
                 }
 
                 @Override

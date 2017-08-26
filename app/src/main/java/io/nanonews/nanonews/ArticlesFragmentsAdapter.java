@@ -11,7 +11,7 @@ import java.util.List;
  */
 
 public class ArticlesFragmentsAdapter extends FragmentStatePagerAdapter {
-    List<Article> articles;
+    private List<Article> articles;
 
     public ArticlesFragmentsAdapter(FragmentManager fm, List<Article> articles) {
         super(fm);
@@ -26,5 +26,14 @@ public class ArticlesFragmentsAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         return articles.size();
+    }
+
+    public List<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
+        this.notifyDataSetChanged();
     }
 }

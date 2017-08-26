@@ -11,7 +11,7 @@ import retrofit2.http.Query;
  */
 public interface NanonewsInterface {
     @GET("news_articles")
-    Call<List<Article>> getArticles(@Query("category_list") String categories);
+    Call<List<Article>> getArticles(@Query("category_ids") String categories);
 
     @GET("categories")
     Call<List<Category>> getCategories();

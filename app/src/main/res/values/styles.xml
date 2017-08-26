@@ -25,5 +25,4 @@
         <item name="android:textSize">19sp</item>
         <item name="android:textStyle">bold</item>
     </style>
-
 </resources>
